@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipetopia — Buku Resep Alami & Hangat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #f4efe6;
+      --bg-paper: #fbf8f3;
+      --surface: #ffffff;
+      --ink: #2a241f;
+      --ink-soft: #64594e;
+      --sage: #5b6e57;
+      --sage-soft: #e6ede4;
+      --terracotta: #c25e38;
+      --terracotta-soft: #fae9e2;
+      --ochre: #b88428;
+      --ochre-soft: #f9f0dc;
+      --clay: #8b6f56;
+      --border: #dfd6c7;
+      --shadow: 0 10px 28px rgba(42, 36, 31, 0.06);
+      --shadow-hover: 0 16px 34px rgba(42, 36, 31, 0.11);
+      --radius-lg: 22px;
+      --radius-md: 15px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-cream);
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(91, 110, 87, 0.08) 0%, transparent 38%),
+        radial-gradient(circle at 88% 18%, rgba(194, 94, 56, 0.08) 0%, transparent 40%),
+        radial-gradient(rgba(139, 111, 86, 0.14) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 24px 24px;
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: "Fraunces", Georgia, serif;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hiasan Header & Banner */
+    .hero-wrap {
+      padding: 28px 0 18px;
+    }
+
+    .hero-banner {
+      position: relative;
+      background: linear-gradient(135deg, var(--bg-paper) 0%, #f1e9da 100%);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* Ornamen garis & daun dekoratif */
+    .hero-banner::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px dashed rgba(91, 110, 87, 0.35);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .botanical-corner {
+      position: absolute;
+      right: -18px;
+      bottom: -24px;
+      width: 170px;
+      height: 170px;
+      opacity: 0.16;
+      pointer-events: none;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sage-soft);
+      color: var(--sage);
+      border: 1px solid rgba(91, 110, 87, 0.25);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 4vw, 2.65rem);
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-sub {
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin-top: 8px;
+      font-size: 0.96rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: all 0.18s ease;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(194, 94, 56, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #aa4f2d;
+      transform: translateY(-1px);
+    }
+
+    .btn-sage {
+      background: var(--sage);
+      color: #fff;
+    }
+
+    .btn-sage:hover {
+      background: #495945;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-cream);
+      border-color: var(--clay);
+    }
+
+    .btn-ghost.active-toggle {
+      background: var(--ochre-soft);
+      border-color: var(--ochre);
+      color: #7d5712;
+    }
+
+    /* Pita hiasan kecil di bawah hero */
+    .ribbon-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+      position: relative;
+      z-index: 2;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    .ribbon-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Panel Filter & Pencarian */
+    .toolbar {
+      background: var(--bg-paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin: 18px 0 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--sage);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+
+    .select-filter {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink-soft);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .chip:hover {
+      border-color: var(--sage);
+      color: var(--ink);
+    }
+
+    .chip.active {
+      background: var(--sage);
+      color: #fff;
+      border-color: var(--sage);
+    }
+
+    /* Galeri Mini Inspirasi / Mood Musim */
+    .mood-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .mood-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--terracotta);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .mood-card:nth-child(2) { border-left-color: var(--sage); }
+    .mood-card:nth-child(3) { border-left-color: var(--ochre); }
+    .mood-card:nth-child(4) { border-left-color: var(--clay); }
+
+    .mood-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .mood-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .mood-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
+
+    .mood-card small {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    /* Grid Kartu Resep */
+    .section-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+      padding-bottom: 64px;
+    }
+
+    .recipe-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-media {
+      position: relative;
+      height: 195px;
+      background: #e9e1d3;
+      overflow: hidden;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .recipe-card:hover .card-media img {
+      transform: scale(1.04);
+    }
+
+    .badge-cat {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(251, 248, 243, 0.94);
+      color: var(--terracotta);
+      border: 1px solid rgba(194, 94, 56, 0.25);
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+    }
+
+    .fav-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(42, 36, 31, 0.55);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.15s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .fav-btn.saved {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+    }
+
+    .card-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .card-title {
+      font-size: 1.22rem;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .card-desc {
+      font-size: 0.89rem;
+      color: var(--ink-soft);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .mini-tag {
+      font-size: 0.74rem;
+      background: var(--sage-soft);
+      color: var(--sage);
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .card-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      text-align: center;
+      background: var(--bg-paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 6px;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    .card-stats strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.84rem;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 54px 20px;
+      background: var(--bg-paper);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius-lg);
+      color: var(--ink-soft);
+    }
+
+    /* Modal Detail & Form Tambah Resep */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(34, 28, 23, 0.58);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-paper);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      max-width: 720px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-close {
+      position: sticky;
+      top: 14px;
+      float: right;
+      margin: 14px 14px -48px 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+    }
+
+    .modal-hero {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-content {
+      padding: 22px 26px 28px;
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      height: 86px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .portion-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--ochre-soft);
+      border: 1px solid rgba(184, 132, 40, 0.3);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      margin: 14px 0;
+    }
+
+    .stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+
+    .stepper button {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-cream);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .modal-section-title {
+      font-size: 1.12rem;
+      margin: 18px 0 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed var(--border);
+      color: var(--sage);
+    }
+
+    .ingredient-list {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+    }
+
+    .ingredient-item label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .ingredient-item input:checked + span {
+      text-decoration: line-through;
+      color: var(--ink-soft);
+    }
+
+    .steps-list {
+      padding-left: 20px;
+      display: grid;
+      gap: 10px;
+      font-size: 0.92rem;
+    }
+
+    .chef-tip {
+      margin-top: 18px;
+      background: var(--sage-soft);
+      border-left: 4px solid var(--sage);
+      padding: 12px 16px;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
+
+    /* Form Tambah Resep */
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--ink);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .field textarea {
+      min-height: 82px;
+      resize: vertical;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-paper);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: var(--ink);
+      color: var(--bg-paper);
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: all 0.22s ease;
+      z-index: 200;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container hero-wrap">
+    <header class="hero-banner">
+      <!-- Hiasan SVG dedaunan & rempah bernuansa alami -->
+      <svg class="botanical-corner" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <path d="M25 175C65 135 105 90 175 25" stroke="#5b6e57" stroke-width="3" stroke-linecap="round"/>
+        <path d="M72 128C55 95 62 62 96 48C105 82 95 110 72 128Z" fill="#5b6e57"/>
+        <path d="M112 88C118 55 145 38 176 46C165 78 140 92 112 88Z" fill="#c25e38"/>
+        <path d="M95 105C128 102 152 122 150 155C118 152 98 132 95 105Z" fill="#b88428"/>
+      </svg>
+
+      <div class="hero-top">
+        <div>
+          <div class="brand-kicker">🌿 Dapur Hangat • Resep Terukur &amp; Alami</div>
+          <h1 class="hero-title">Recipe<em>topia</em></h1>
+          <p class="hero-sub">
+            Kumpulan resep rumahan, sajian berkuah hangat, camilan alami, hingga minuman segar—lengkap dengan takaran akurat, panduan langkah demi langkah, dan penyesuaian porsi otomatis.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-ghost" id="btnFavFilter" type="button">
+            ♡ Favorit (<span id="favCount">0</span>)
+          </button>
+          <button class="btn btn-sage" id="btnRandomRecipe" type="button">
+            🎲 Resep Acak
+          </button>
+          <button class="btn btn-primary" id="btnOpenAddModal" type="button">
+            + Tambah Resep
+          </button>
+        </div>
+      </div>
+
+      <div class="ribbon-strip">
+        <span class="ribbon-pill">🌾 Bahan Segar Harian</span>
+        <span class="ribbon-pill">🍲 Takaran Gram &amp; Mililiter Jelas</span>
+        <span class="ribbon-pill">📝 Centang Bahan Saat Memasak</span>
+        <span class="ribbon-pill">💾 Favorit &amp; Resep Baru Tersimpan</span>
+      </div>
+    </header>
+
+    <!-- Toolbar Pencarian & Filter -->
+    <section class="toolbar" aria-label="Pencarian dan filter resep">
+      <div class="toolbar-row">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari judul resep, bahan (misal: jahe, santan, ayam, oat, lemon)..."
+          />
+        </div>
+
+        <select class="select-filter" id="difficultySelect" aria-label="Filter tingkat kesulitan">
+          <option value="Semua">Semua Tingkat</option>
+          <option value="Mudah">Mudah</option>
+          <option value="Sedang">Sedang</option>
+        </select>
+
+        <select class="select-filter" id="sortSelect" aria-label="Urutkan resep">
+          <option value="default">Urutan: Rekomendasi</option>
+          <option value="time-asc">Waktu Tercepat</option>
+          <option value="name-asc">Nama (A–Z)</option>
+        </select>
+      </div>
+
+      <div class="chips" id="categoryChips"></div>
+    </section>
+
+    <!-- Kartu Inspirasi Cepat -->
+    <section class="mood-strip" aria-label="Inspirasi cepat">
+      <div class="mood-card" data-quick="Hangat">
+        <img
+          class="mood-thumb"
+          src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=200&q=75"
+          alt="Sup hangat"
+          onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=75'"
+        />
+        <div>
+          <strong>Hangat &amp; Menenangkan</strong>
+          <small>Klik untuk cari menu hangat &amp; berkuah</small>
+        </div>
+      </div>
+
+      <div class="mood-card" data-quick="Cepat">
+        <img
+          class="mood-thumb"
+          src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=200&q=75"
+          alt="Salad segar"
+          onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=75'"
+        />
+        <div>
+          <strong>Segar &amp; Praktis</strong>
+          <small>Klik untuk cari resep kilat &amp; segar</small>
+        </div>
+      </div>
+
+      <div class="mood-card" data-quick="Manis">
+        <img
+          class="mood-thumb"
+          src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=200&q=75"
+          alt="Camilan manis"
+          onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=75'"
+        />
+        <div>
+          <strong>Camilan Sore Hari</strong>
+          <small>Klik untuk cari camilan &amp; kudapan manis</small>
+        </div>
+      </div>
+
+      <div class="mood-card" id="resetAllBtn">
+        <img
+          class="mood-thumb"
+          src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=200&q=75"
+          alt="Reset filter"
+          onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=75'"
+        />
+        <div>
+          <strong>Tampilkan Semua</strong>
+          <small>Reset pencarian &amp; filter ke awal</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ringkasan Hasil -->
+    <div class="section-meta">
+      <span id="resultCounter">Menampilkan resep...</span>
+      <span>Klik kartu resep untuk melihat bahan, galeri foto &amp; langkah lengkap</span>
+    </div>
+
+    <!-- Daftar Resep -->
+    <main class="recipe-grid" id="recipeGrid"></main>
+  </div>
+
+  <!-- Modal Detail Resep -->
+  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalRecipeTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="closeDetailModal" type="button" aria-label="Tutup detail resep">&times;</button>
+      <div id="detailModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal Tambah Resep Baru -->
+  <div class="modal-backdrop" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addModalTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="closeAddModal" type="button" aria-label="Tutup form tambah resep">&times;</button>
+      <div class="modal-content">
+        <div class="brand-kicker">🌱 Kontribusi Dapur</div>
+        <h2 id="addModalTitle" style="font-size: 1.5rem; margin-bottom: 6px;">Tambah Resep Baru</h2>
+        <p style="color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 16px;">
+          Resep buatanmu akan langsung muncul di katalog dan tersimpan di browser ini.
+        </p>
+
+        <form id="addRecipeForm" class="form-grid">
+          <div class="field">
+            <label for="newTitle">Nama Resep *</label>
+            <input type="text" id="newTitle" required placeholder="Contoh: Tumis Jamur Tiram Kemangi" />
+          </div>
+
+          <div class="form-row-2">
+            <div class="field">
+              <label for="newCategory">Kategori</label>
+              <select id="newCategory">
+                <option value="Hidangan Utama">Hidangan Utama</option>
+                <option value="Sup & Berkuah">Sup &amp; Berkuah</option>
+                <option value="Camilan & Kue">Camilan &amp; Kue</option>
+                <option value="Minuman Alami">Minuman Alami</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="newDifficulty">Tingkat Kesulitan</label>
+              <select id="newDifficulty">
+                <option value="Mudah">Mudah</option>
+                <option value="Sedang">Sedang</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="field">
+              <label for="newTime">Waktu Masak (menit)</label>
+              <input type="number" id="newTime" min="3" max="300" value="20" required />
+            </div>
+
+            <div class="field">
+              <label for="newServings">Porsi Dasar</label>
+              <input type="number" id="newServings" min="1" max="20" value="2" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="newDesc">Deskripsi Singkat *</label>
+            <input type="text" id="newDesc" required placeholder="Cita rasa gurih harum dengan aroma rempah dan daun segar." />
+          </div>
+
+          <div class="field">
+            <label for="newIngredients">Bahan-bahan (1 bahan per baris; awali angka jika ingin dihitung otomatis, misal: <code>200 gr jamur tiram</code>)</label>
+            <textarea id="newIngredients" required placeholder="250 gr jamur tiram, suwir&#10;3 siung bawang putih, cincang&#10;1 genggam daun kemangi&#10;1 sdm kecap asin"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="newSteps">Langkah Pembuatan (1 langkah per baris)</label>
+            <textarea id="newSteps" required placeholder="Panaskan sedikit minyak, tumis bawang putih hingga harum.&#10;Masukkan jamur tiram, aduk rata hingga mengeluarkan kaldu dan matang.&#10;Tambahkan kecap asin dan daun kemangi, aduk sebentar lalu angkat."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="newTip">Tips Dapur (Opsional)</label>
+            <input type="text" id="newTip" placeholder="Peras air pada jamur suwir sebelum ditumis agar tidak terlalu berair." />
+          </div>
+
+          <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 6px;">
+            <button type="button" class="btn btn-ghost" id="cancelAddBtn">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan Resep</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div class="container">
+      <strong>Recipetopia</strong> • Dibuat dengan nuansa hangat &amp; alami untuk menemani waktu masak harianmu.
+    </div>
+  </footer>
+
+  <script>
+    const FALLBACK_IMG = "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80";
+
+    const DEFAULT_RECIPES = [
+      {
+        id: "ayam-kecap-jahe",
+        title: "Ayam Kecap Jahe & Bawang Putih",
+        category: "Hidangan Utama",
+        difficulty: "Mudah",
+        minutes: 30,
+        servings: 2,
+        tags: ["Gurih Manis", "Hangat", "Lauk Harian"],
+        desc: "Potongan paha ayam juicy yang dimasak perlahan bersama jahe geprek, bawang putih, dan kecap manis hingga mengilap.",
+        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=80"
+        ],
+        ingredients: [
+          { qty: 400, unit: "gr", name: "paha ayam fillet atau bertulang, potong sedang" },
+          { qty: 4, unit: "siung", name: "bawang putih, cincang halus" },
+          { qty: 3, unit: "cm", name: "jahe segar, memarkan" },
+          { qty: 3, unit: "sdm", name: "kecap manis" },
+          { qty: 1, unit: "sdm", name: "kecap asin" },
+          { qty: 120, unit: "ml", name: "air matang" },
+          { qty: 1.5, unit: "sdm", name: "minyak goreng" }
+        ],
+        steps: [
+          "Lumuri potongan ayam dengan sejumput garam dan lada, diamkan selama 10 menit agar bumbu meresap.",
+          "Panaskan minyak di wajan dengan api sedang, tumis bawang putih dan jahe hingga harum keemasan.",
+          "Masukkan potongan ayam, aduk hingga permukaan daging berubah warna pucat.",
+          "Tuangkan kecap manis, kecap asin, dan air. Kecilkan api, tutup sebagian wajan, lalu masak 15–18 menit hingga kuah mengental dan ayam matang sempurna.",
+          "Koreksi rasa, angkat jahe bila perlu, lalu sajikan hangat bersama nasi putih."
+        ],
+        tip: "Memakai bagian paha membuat daging tetap empuk dan tidak mudah kering meski dimasak hingga saus mengental."
+      },
+      {
+        id: "sup-labu-kuning-jahe",
+        title: "Sup Labu Kuning Creamy Jahe",
+        category: "Sup & Berkuah",
+        difficulty: "Mudah",
+        minutes: 25,
+        servings: 2,
+        tags: ["Hangat", "Nabati", "Lembut"],
+        desc: "Sup kental berwarna jingga keemasan dari labu kuning manis, sentuhan jahe hangat, dan taburan biji labu sangrai.",
+        image: "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=900&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=900&q=80"
+        ],
+        ingredients: [
+          { qty: 350, unit: "gr", name: "labu kuning, kupas dan potong dadu" },
+          { qty: 0.5, unit: "buah", name: "bawang bombay ukuran kecil, cincang" },
+          { qty: 2, unit: "cm", name: "jahe parut halus" },
+          { qty: 300, unit: "ml", name: "kaldu sayur atau air" },
+          { qty: 60, unit: "ml", name: "santan encer atau susu tawar" },
+          { qty: 1, unit: "sdm", name: "minyak zaitun atau mentega" },
+          { qty: 0.5, unit: "sdt", name: "garam dan sejumput lada putih" }
+        ],
+        steps: [
+          "Tumis bawang bombay dan jahe dengan minyak atau mentega hingga harum dan lembut (sekitar 3 menit).",
+          "Masukkan potongan labu kuning dan kaldu/air, lalu rebus dengan api sedang selama 12–15 menit hingga labu empuk mudah ditusuk garpu.",
+          "Haluskan menggunakan blender atau tekan-tekan dengan garpu/saringan hingga teksturnya halus sesuai selera.",
+          "Kembalikan ke panci dengan api kecil, masukkan santan/susu, garam, dan lada, aduk perlahan selama 2 menit tanpa mendidih keras."
+        ],
+        tip: "Sajikan dengan irisan daun seledri atau biji bunga matahari/labu sangrai agar ada kontras tekstur renyah."
+      },
+      {
+        id: "tumis-buncis-tahu-wijen",
+        title: "Tumis Buncis & Tahu Wijen Sangrai",
+        category: "Hidangan Utama",
+        difficulty: "Mudah",
+        minutes: 15,
+        servings: 2,
+        tags: ["Cepat", "Segar", "Sayur"],
+        desc: "Buncis renyah berwarna hijau cerah berpadu tahu potong dadu dan aroma wijen sangrai yang khas.",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80"
+        ],
+        ingredients: [
+          { qty: 200, unit: "gr", name: "buncis muda, siangi dan potong serong" },
+          { qty: 150, unit: "gr", name: "tahu putih padat, potong dadu" },
+          { qty: 3, unit: "siung", name: "bawang putih, iris tipis" },
+          { qty: 1, unit: "sdm", name: "saus tiram atau kecap asin" },
+          { qty: 1, unit: "sdt", name: "biji wijen putih sangrai" },
+          { qty: 1, unit: "sdm", name: "minyak goreng" }
+        ],
+        steps: [
+          "Goreng atau panggang sebentar potongan tahu hingga bagian luarnya sedikit kokoh, lalu tiriskan.",
+          "Dengan api cukup besar, tumis bawang putih hingga harum selama 30 detik.",
+          "Masukkan buncis dan 2 sdm air, aduk cepat selama 3–4 menit agar buncis tetap renyah dan hijau.",
+          "Masukkan tahu dan saus tiram/kecap asin, aduk rata selama 1 menit, lalu taburi biji wijen sangrai sebelum diangkat."
+        ],
+        tip: "Jangan menutup wajan terlalu lama saat menumis buncis supaya warna hijaunya tetap segar dan tidak layu pucat."
+      },
+      {
+        id: "pisang-panggang-madu-kayu-manis",
+        title: "Pisang Panggang Madu Kayu Manis",
+        category: "Camilan & Kue",
+        difficulty: "Mudah",
+        minutes: 15,
+        servings: 2,
+        tags: ["Manis", "Cepat", "Camilan"],
+        desc: "Pisang matang yang dipanggang hingga karamel tipis, berpadu madu alami dan bubuk kayu manis yang hangat.",
+        image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"
+        ],
+        ingredients: [
+          { qty: 3, unit: "buah", name: "pisang kepok atau cavendish matang, belah memanjang" },
+          { qty: 1, unit: "sdm", name: "mentega atau minyak kelapa" },
+          { qty: 1.5, unit: "sdm", name: "madu alami" },
+          { qty: 0.5, unit: "sdt", name: "bubuk kayu manis" },
+          { qty: 1, unit: "sdm", name: "kacang almond atau kenari cincang (opsional)" }
+        ],
+        steps: [
+          "Lelehkan mentega atau minyak kelapa di teflon anti lengket dengan api sedang-kecil.",
+          "Tata potongan pisang di permukaan teflon, panggang sekitar 2–3 menit tiap sisi hingga muncul bercak kecokelatan.",
+          "Matikan api atau kecilkan maksimal, lalu tuangkan madu dan taburkan bubuk kayu manis secara merata.",
+          "Sajikan hangat dengan taburan kacang cincang atau disandingkan dengan yogurt tawar."
+        ],
+        tip: "Pilih pisang yang sudah matang merata (berbintik cokelat alami) karena rasanya lebih manis tanpa perlu gula tambahan."
+      },
+      {
+        id: "es-teh-serai-lemon-madu",
+        title: "Infused Tea Serai, Lemon & Madu",
+        category: "Minuman Alami",
+        difficulty: "Mudah",
+        minutes: 12,
+        servings: 2,
+        tags: ["Segar", "Hangat", "Minuman"],
+        desc: "Minuman aromatik dari seduhan teh dan batang serai geprek dengan perasan lemon segar serta manisnya madu.",
+        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"
+        ],
+        ingredients: [
+          { qty: 2, unit: "batang", name: "serai segar, ambil bagian putih dan memarkan" },
+          { qty: 2, unit: "kantong", name: "teh hitam atau teh hijau (atau 1.5 sdt teh daun)" },
+          { qty: 400, unit: "ml", name: "air" },
+          { qty: 2, unit: "sdm", name: "air perasan lemon segar" },
+          { qty: 2, unit: "sdm", name: "madu (sesuaikan selera)" }
+        ],
+        steps: [
+          "Didihkan air bersama batang serai yang sudah dimemarkan selama 5 menit agar aroma serai keluar.",
+          "Matikan kompor, masukkan teh, lalu diamkan selama 3–4 menit agar teh tidak terlalu pahit.",
+          "Saring cairan ke dalam gelas saji, biarkan hangat suam-suam kuku sebelum menambahkan madu.",
+          "Tambahkan air lemon dan madu, aduk rata. Nikmati hangat atau tambahkan es batu untuk versi dingin yang menyegarkan."
+        ],
+        tip: "Tunggu seduhan teh agak turun panasnya sebelum mencampur madu agar aroma dan kualitas madu tetap terjaga."
+      },
+      {
+        id: "overnight-oat-apel-kayu-manis",
+        title: "Overnight Oat Apel & Kayu Manis",
+        category: "Camilan & Kue",
+        difficulty: "Mudah",
+        minutes: 10,
+        servings: 1,
+        tags: ["Manis", "Segar", "Sarapan"],
+        desc: "Oatmeal lembut yang direndam semalaman bersama susu, potongan apel segar, kayu manis, dan biji chia.",
+        image: "https://images.unsplash.com/photo-1517673151402-aa7c42a82366?auto=format&fit=crop&w=900&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1517673151402-aa7c42a82366?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=900&q=80"
+        ],
+        ingredients: [
+          { qty: 60, unit: "gr", name: "rolled oats" },
+          { qty: 120, unit: "ml", name: "susu cair atau susu nabati" },
+          { qty: 1, unit: "sdm", name: "biji chia" },
+          { qty: 0.5, unit: "buah", name: "apel manis, potong dadu kecil" },
+          { qty: 0.25, unit: "sdt", name: "bubuk kayu manis" },
+          { qty: 1, unit: "sdt", name: "madu atau sirup maple" }
+        ],
+        steps: [
+          "Dalam stoples atau mangkuk tertutup, campurkan rolled oats, susu, biji chia, kayu manis, dan madu.",
+          "Aduk hingga merata agar biji chia tidak menggumpal di satu sisi.",
+          "Masukkan potongan apel (sisakan sedikit untuk topping), tutup rapat, dan simpan di kulkas minimal 4 jam atau semalaman.",
+          "Aduk kembali sebelum disantap, beri sisa potongan apel di atasnya."
+        ],
+        tip: "Gunakan rolled oats (bukan instant oat instan halus) supaya teksturnya tetap kenyal dan tidak terlalu bubur."
+      }
+    ];
+
+    const STORAGE_FAV_KEY = "recipetopia_favorites_v1";
+    const STORAGE_CUSTOM_KEY = "recipetopia_custom_recipes_v1";
+
+    let favorites = loadJSON(STORAGE_FAV_KEY, ["ayam-kecap-jahe", "es-teh-serai-lemon-madu"]);
+    let customRecipes = loadJSON(STORAGE_CUSTOM_KEY, []);
+
+    let state = {
+      category: "Semua",
+      difficulty: "Semua",
+      sort: "default",
+      search: "",
+      onlyFavorites: false
+    };
+
+    let activeModalRecipeId = null;
+    let activePortionMultiplier = 1;
+
+    function loadJSON(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function saveJSON(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch {
+        // Abaikan jika storage dibatasi
+      }
+    }
+
+    function getAllRecipes() {
+      return [...customRecipes, ...DEFAULT_RECIPES];
+    }
+
+    function getCategories() {
+      const set = new Set(["Semua", "Hidangan Utama", "Sup & Berkuah", "Camilan & Kue", "Minuman Alami"]);
+      getAllRecipes().forEach((r) => set.add(r.category));
+      return Array.from(set);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+
+    function formatQty(qty, multiplier) {
+      if (typeof qty !== "number" || Number.isNaN(qty)) return "";
+      const val = qty * multiplier;
+      const rounded = Math.round(val * 100) / 100;
+      if (Math.abs(rounded - 0.5) < 0.01) return "½";
+      if (Math.abs(rounded - 0.25) < 0.01) return "¼";
+      if (Math.abs(rounded - 0.75) < 0.01) return "¾";
+      if (Math.abs(rounded - 1.5) < 0.01) return "1½";
+      return String(rounded).replace(".", ",");
+    }
+
+    function renderCategoryChips() {
+      const wrap = document.getElementById("categoryChips");
+      const cats = getCategories();
+      wrap.innerHTML = cats
+        .map(
+          (cat) => `
+          <button
+            type="button"
+            class="chip ${state.category === cat ? "active" : ""}"
+            data-category="${escapeHtml(cat)}"
+          >
+            ${escapeHtml(cat)}
+          </button>
+        `
+        )
+        .join("");
+
+      wrap.querySelectorAll(".chip").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.category = btn.dataset.category;
+          renderCategoryChips();
+          renderRecipes();
+        });
+      });
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function getFilteredRecipes() {
+      const q = state.search.trim().toLowerCase();
+      let list = getAllRecipes().filter((r) => {
+        if (state.onlyFavorites && !favorites.includes(r.id)) return false;
+        if (state.category !== "Semua" && r.category !== state.category) return false;
+        if (state.difficulty !== "Semua" && r.difficulty !== state.difficulty) return false;
+
+        if (q) {
+          const hay = [
+            r.title,
+            r.category,
+            r.desc,
+            ...(r.tags || []),
+            ...(r.ingredients || []).map((i) => (typeof i === "string" ? i : `${i.unit} ${i.name}`))
+          ]
+            .join(" ")
+            .toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      if (state.sort === "time-asc") {
+        list = [...list].sort((a, b) => a.minutes - b.minutes);
+      } else if (state.sort === "name-asc") {
+        list = [...list].sort((a, b) => a.title.localeCompare(b.title, "id"));
+      }
+
+      return list;
+    }
+
+    function updateCounters(shownCount) {
+      document.getElementById("favCount").textContent = favorites.length;
+      const favBtn = document.getElementById("btnFavFilter");
+      favBtn.classList.toggle("active-toggle", state.onlyFavorites);
+
+      const total = getAllRecipes().length;
+      const counter = document.getElementById("resultCounter");
+      counter.textContent = `Menampilkan ${shownCount} dari ${total} resep tersedia`;
+    }
+
+    function renderRecipes() {
+      const grid = document.getElementById("recipeGrid");
+      const list = getFilteredRecipes();
+      updateCounters(list.length);
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <h3 style="margin-bottom: 6px; color: var(--ink);">Belum ada resep yang pas</h3>
+            <p>Coba ubah kata kunci pencarian, kategori, atau klik <strong>Tampilkan Semua</strong>.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = list
+        .map((r) => {
+          const isFav = favorites.includes(r.id);
+          const tagsHtml = (r.tags || [])
+            .slice(0, 3)
+            .map((t) => `<span class="mini-tag">${escapeHtml(t)}</span>`)
+            .join("");
+
+          return `
+            <article class="recipe-card">
+              <div class="card-media">
+                <img
+                  src="${escapeHtml(r.image || FALLBACK_IMG)}"
+                  alt="${escapeHtml(r.title)}"
+                  loading="lazy"
+                  onerror="this.src='${FALLBACK_IMG}'"
+                />
+                <span class="badge-cat">${escapeHtml(r.category)}</span>
+                <button
+                  type="button"
+                  class="fav-btn ${isFav ? "saved" : ""}"
+                  data-fav-id="${escapeHtml(r.id)}"
+                  aria-label="${isFav ? "Hapus dari favorit" : "Simpan ke favorit"}"
+                  title="${isFav ? "Tersimpan di favorit" : "Simpan ke favorit"}"
+                >
+                  ${isFav ? "♥" : "♡"}
+                </button>
+              </div>
+
+              <div class="card-body">
+                <div>
+                  <h2 class="card-title">${escapeHtml(r.title)}</h2>
+                  <p class="card-desc">${escapeHtml(r.desc)}</p>
+                  <div class="tag-row">${tagsHtml}</div>
+                </div>
+
+                <div>
+                  <div class="card-stats" style="margin-bottom: 12px;">
+                    <div><span>⏱ Waktu</span><strong>${r.minutes} mnt</strong></div>
+                    <div><span>🍽 Porsi</span><strong>${r.servings} org</strong></div>
+                    <div><span>🌿 Level</span><strong>${escapeHtml(r.difficulty)}</strong></div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    style="width: 100%;"
+                    data-open-id="${escapeHtml(r.id)}"
+                  >
+                    Buka Resep Lengkap
+                  </button>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join("");
+
+      grid.querySelectorAll("[data-fav-id]").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleFavorite(btn.dataset.favId);
+        });
+      });
+
+      grid.querySelectorAll("[data-open-id]").forEach((btn) => {
+        btn.addEventListener("click", () => openRecipeDetail(btn.dataset.openId));
+      });
+    }
+
+    function toggleFavorite(id) {
+      if (favorites.includes(id)) {
+        favorites = favorites.filter((item) => item !== id);
+        showToast("Dihapus dari daftar favorit");
+      } else {
+        favorites.push(id);
+        showToast("Disimpan ke favorit ♥");
+      }
+      saveJSON(STORAGE_FAV_KEY, favorites);
+      renderRecipes();
+      if (activeModalRecipeId === id) {
+        renderDetailModalContent();
+      }
+    }
+
+    function openRecipeDetail(id) {
+      activeModalRecipeId = id;
+      activePortionMultiplier = 1;
+      renderDetailModalContent();
+      document.getElementById("detailModal").classList.add("open");
+    }
+
+    function renderDetailModalContent() {
+      const recipe = getAllRecipes().find((r) => r.id === activeModalRecipeId);
+      if (!recipe) return;
+
+      const currentServings = Math.max(1, Math.round(recipe.servings * activePortionMultiplier));
+      const isFav = favorites.includes(recipe.id);
+      const gallery = recipe.gallery && recipe.gallery.length ? recipe.gallery : [recipe.image || FALLBACK_IMG];
+
+      const ingredientsHtml = (recipe.ingredients || [])
+        .map((ing, idx) => {
+          let labelText = "";
+          if (typeof ing === "string") {
+            labelText = ing;
+          } else {
+            const qtyStr = formatQty(ing.qty, activePortionMultiplier);
+            const unitStr = ing.unit ? `${ing.unit} ` : "";
+            labelText = `${qtyStr ? qtyStr + " " : ""}${unitStr}${ing.name}`;
+          }
+          return `
+            <li class="ingredient-item">
+              <label>
+                <input type="checkbox" id="ing-${recipe.id}-${idx}" />
+                <span>${escapeHtml(labelText.trim())}</span>
+              </label>
+            </li>
+          `;
+        })
+        .join("");
+
+      const stepsHtml = (recipe.steps || [])
+        .map((step) => `<li>${escapeHtml(step)}</li>`)
+        .join("");
+
+      const galleryHtml =
+        gallery.length > 1
+          ? `
+            <div class="gallery-strip">
+              ${gallery
+                .map(
+                  (imgUrl, i) => `
+                  <img
+                    src="${escapeHtml(imgUrl)}"
+                    alt="Referensi tampilan ${i + 1} - ${escapeHtml(recipe.title)}"
+                    onerror="this.src='${FALLBACK_IMG}'"
+                    onclick="document.getElementById('modalMainPhoto').src=this.src"
+                  />
+                `
+                )
+                .join("")}
+            </div>
+          `
+          : "";
+
+      document.getElementById("detailModalBody").innerHTML = `
+        <img
+          id="modalMainPhoto"
+          class="modal-hero"
+          src="${escapeHtml(recipe.image || FALLBACK_IMG)}"
+          alt="${escapeHtml(recipe.title)}"
+          onerror="this.src='${FALLBACK_IMG}'"
+        />
+        <div class="modal-content">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center;">
+            <span class="badge-cat" style="position: static;">${escapeHtml(recipe.category)} • ${escapeHtml(recipe.difficulty)} • ⏱ ${recipe.minutes} menit</span>
+            <button type="button" class="btn btn-ghost" id="modalFavBtn">
+              ${isFav ? "♥ Tersimpan di Favorit" : "♡ Simpan Favorit"}
+            </button>
+          </div>
+
+          <h2 id="modalRecipeTitle" style="font-size: 1.6rem; margin-top: 10px;">${escapeHtml(recipe.title)}</h2>
+          <p style="color: var(--ink-soft); margin-top: 6px; font-size: 0.94rem;">${escapeHtml(recipe.desc)}</p>
+
+          ${galleryHtml}
+
+          <div class="portion-bar">
+            <div>
+              <strong style="font-size: 0.9rem;">🍽 Atur Porsi Masakan: <span id="portionLabel">${currentServings} porsi</span></strong>
+              <div style="font-size: 0.78rem; color: var(--ink-soft);">Takaran bahan otomatis menyesuaikan</div>
+            </div>
+            <div class="stepper">
+              <button type="button" id="decPortion" aria-label="Kurangi porsi">−</button>
+              <span style="min-width: 54px; text-align: center; font-weight: 700; font-size: 0.88rem;">${currentServings} porsi</span>
+              <button type="button" id="incPortion" aria-label="Tambah porsi">+</button>
+            </div>
+          </div>
+
+          <h3 class="modal-section-title">🧺 Bahan-bahan (Klik untuk mencentang)</h3>
+          <ul class="ingredient-list">${ingredientsHtml}</ul>
+
+          <h3 class="modal-section-title">👩‍🍳 Langkah Pembuatan</h3>
+          <ol class="steps-list">${stepsHtml}</ol>
+
+          ${
+            recipe.tip
+              ? `<div class="chef-tip"><strong>💡 Tips Dapur:</strong> ${escapeHtml(recipe.tip)}</div>`
+              : ""
+          }
+        </div>
+      `;
+
+      document.getElementById("modalFavBtn").addEventListener("click", () => toggleFavorite(recipe.id));
+      document.getElementById("decPortion").addEventListener("click", () => {
+        if (currentServings > 1) {
+          activePortionMultiplier = (currentServings - 1) / recipe.servings;
+          renderDetailModalContent();
+        }
+      });
+      document.getElementById("incPortion").addEventListener("click", () => {
+        activePortionMultiplier = (currentServings + 1) / recipe.servings;
+        renderDetailModalContent();
+      });
+    }
+
+    function parseIngredientLine(line) {
+      const cleaned = line.trim();
+      const match = cleaned.match(/^(\d+(?:[.,]\d+)?)\s*(gr|gram|kg|ml|l|sdm|sdt|buah|siung|batang|lembar|butir|potong|genggam|kantong)?\s+(.+)$/i);
+      if (match) {
+        const qty = parseFloat(match[1].replace(",", "."));
+        const unit = match[2] ? match[2].toLowerCase() : "";
+        const name = match[3].trim();
+        return { qty, unit, name };
+      }
+      return cleaned;
+    }
+
+    function initEvents() {
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderRecipes();
+      });
+
+      document.getElementById("difficultySelect").addEventListener("change", (e) => {
+        state.difficulty = e.target.value;
+        renderRecipes();
+      });
+
+      document.getElementById("sortSelect").addEventListener("change", (e) => {
+        state.sort = e.target.value;
+        renderRecipes();
+      });
+
+      document.getElementById("btnFavFilter").addEventListener("click", () => {
+        state.onlyFavorites = !state.onlyFavorites;
+        renderRecipes();
+      });
+
+      document.getElementById("btnRandomRecipe").addEventListener("click", () => {
+        const pool = getFilteredRecipes().length ? getFilteredRecipes() : getAllRecipes();
+        const pick = pool[Math.floor(Math.random() * pool.length)];
+        if (pick) {
+          openRecipeDetail(pick.id);
+          showToast(`Resep pilihan: ${pick.title}`);
+        }
+      });
+
+      document.querySelectorAll(".mood-card[data-quick]").forEach((card) => {
+        card.addEventListener("click", () => {
+          const kw = card.dataset.quick;
+          state.search = kw;
+          document.getElementById("searchInput").value = kw;
+          renderRecipes();
+          showToast(`Menampilkan inspirasi "${kw}"`);
+        });
+      });
+
+      document.getElementById("resetAllBtn").addEventListener("click", () => {
+        state = {
+          category: "Semua",
+          difficulty: "Semua",
+          sort: "default",
+          search: "",
+          onlyFavorites: false
+        };
+        document.getElementById("searchInput").value = "";
+        document.getElementById("difficultySelect").value = "Semua";
+        document.getElementById("sortSelect").value = "default";
+        renderCategoryChips();
+        renderRecipes();
+        showToast("Semua filter direset");
+      });
+
+      // Tutup modal detail
+      const detailModal = document.getElementById("detailModal");
+      document.getElementById("closeDetailModal").addEventListener("click", () => {
+        detailModal.classList.remove("open");
+        activeModalRecipeId = null;
+      });
+      detailModal.addEventListener("click", (e) => {
+        if (e.target === detailModal) {
+          detailModal.classList.remove("open");
+          activeModalRecipeId = null;
+        }
+      });
+
+      // Modal tambah resep
+      const addModal = document.getElementById("addModal");
+      const openAdd = () => addModal.classList.add("open");
+      const closeAdd = () => addModal.classList.remove("open");
+
+      document.getElementById("btnOpenAddModal").addEventListener("click", openAdd);
+      document.getElementById("closeAddModal").addEventListener("click", closeAdd);
+      document.getElementById("cancelAddBtn").addEventListener("click", closeAdd);
+      addModal.addEventListener("click", (e) => {
+        if (e.target === addModal) closeAdd();
+      });
+
+      document.getElementById("addRecipeForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.getElementById("newTitle").value.trim();
+        const category = document.getElementById("newCategory").value;
+        const difficulty = document.getElementById("newDifficulty").value;
+        const minutes = Math.max(1, parseInt(document.getElementById("newTime").value, 10) || 20);
+        const servings = Math.max(1, parseInt(document.getElementById("newServings").value, 10) || 2);
+        const desc = document.getElementById("newDesc").value.trim();
+        const tip = document.getElementById("newTip").value.trim();
+
+        const rawIng = document
+          .getElementById("newIngredients")
+          .value.split("\n")
+          .map((l) => l.trim())
+          .filter(Boolean);
+
+        const steps = document
+          .getElementById("newSteps")
+          .value.split("\n")
+          .map((l) => l.trim())
+          .filter(Boolean);
+
+        if (!title || !desc || !rawIng.length || !steps.length) {
+          showToast("Lengkapi nama resep, deskripsi, bahan, dan langkahnya ya");
+          return;
+        }
+
+        const newItem = {
+          id: "custom-" + Date.now(),
+          title,
+          category,
+          difficulty,
+          minutes,
+          servings,
+          tags: ["Resep Kamu", difficulty],
+          desc,
+          image: FALLBACK_IMG,
+          gallery: [FALLBACK_IMG],
+          ingredients: rawIng.map(parseIngredientLine),
+          steps,
+          tip
+        };
+
+        customRecipes.unshift(newItem);
+        saveJSON(STORAGE_CUSTOM_KEY, customRecipes);
+        e.target.reset();
+        closeAdd();
+        renderCategoryChips();
+        renderRecipes();
+        showToast(`Resep "${title}" berhasil ditambahkan!`);
+      });
+    }
+
+    renderCategoryChips();
+    renderRecipes();
+    initEvents();
+  </script>
+</body>
+</html>
